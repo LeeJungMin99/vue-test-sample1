@@ -9,12 +9,11 @@
               >{{}} {{ ticket.category }} - {{ ticket.subject }}
             </div>
             <div class="flex flex-row">
-              <a
-                href="#"
-                class="text-sm font-bold"
-                @click.prevent="goToDetails(ticket.id)"
-                >Ticket Details</a
-              >
+              <PageLink
+                linkName="Ticket Details"
+                path="/ticket"
+                :id="ticket.id"
+              />
               <div class="px-6 mt-1"><TrashIcon /></div>
             </div>
           </div>
@@ -22,28 +21,15 @@
       </ul>
     </div>
     <div class="mt-14">
-      <a
-        href="#"
-        class="text-md font-bold underline"
-        @click.prevent="goToHomePage"
-        >Add New Ticket</a
-      >
+      <PageLink linkName="Add New Ticket" path="/" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { useRouter } from "vue-router";
 import { useTicketsStore } from "@/stores/TicketStore";
+import PageLink from "./common/PageLink.vue";
 import TrashIcon from "../components/common/TrashIcon.vue";
-
-const router = useRouter();
-const goToHomePage = () => {
-  router.push("/");
-};
-const goToDetails = (id) => {
-  router.push(`/ticket/${id}`);
-};
 
 const store = useTicketsStore();
 console.log("🚀 ~ store in list=========:", store.tickets);

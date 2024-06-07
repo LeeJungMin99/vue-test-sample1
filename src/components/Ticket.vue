@@ -45,26 +45,19 @@
   </div>
 
   <div class="px-2 py-4">
-    <a href="#" class="text-md font-bold underline" @click.prevent="goToTickets"
-      >All Tickets</a
-    >
+    <PageLink linkName="All Tickets" path="/ticketlist" />
   </div>
 </template>
 
 <script setup>
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { useTicketsStore } from "@/stores/TicketStore";
+import PageLink from "./common/PageLink.vue";
 import TrashIcon from "./common/TrashIcon.vue";
-
-const router = useRouter();
-const goToTickets = () => {
-  router.push("/ticketlist");
-};
 
 const route = useRoute();
 const store = useTicketsStore();
 
 const ticket = store.tickets.find((ticket) => ticket.id == route.params.id);
-console.log("🚀 ~ store in detail=========:", store.tickets);
 console.log("🚀 ~ ticket:", ticket);
 </script>

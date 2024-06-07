@@ -65,21 +65,13 @@
           multiple
           type="file"
           id="file"
-          ref="filename"
           class="block w-full text-sm"
           @change="handleFileChange"
         />
       </div>
     </div>
     <div class="py-10 px-2 w-full flex justify-between">
-      <div>
-        <a
-          href="#"
-          class="text-md font-bold underline"
-          @click.prevent="goToTickets"
-          >All Tickets</a
-        >
-      </div>
+      <div><PageLink linkName="All Tickets" path="/ticketlist" /></div>
       <div>
         <button class="px-2 text-sm" @click="initiateForm">Cancel</button>
         <button
@@ -94,16 +86,14 @@
 
 <script setup>
 import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
 import { useTicketsStore } from "@/stores/TicketStore";
 import { categoryData, itemData } from "../constants/data";
-import { useRouter } from "vue-router";
+import PageLink from "./common/PageLink.vue";
 
 const router = useRouter();
-const goToTickets = () => {
-  router.push("/ticketlist");
-};
-
 const store = useTicketsStore();
+
 const categories = ref([...categoryData]);
 const items = ref([...itemData]);
 
@@ -115,16 +105,11 @@ const formData = ref({
   addedFiles: [],
 });
 
-const filename = ref(null);
 const submittedData = ref(null);
 const addedFiles = ref([]);
 const sequence = ref(0);
 
 const filteredItems = computed(() => {
-  // if (!formData.value.category) return props.items;
-  // return props.items.filter(
-  //   (item) => item.category === formData.value.category
-  // );
   if (!formData.value.category) return items.value;
   return items.value.filter(
     (item) => item.category === formData.value.category
@@ -154,7 +139,6 @@ const handleFileChange = (e) => {
       name: newName,
     });
   }
-  console.log("********** addedFiles", addedFiles.value);
 };
 
 const handleSubmit = () => {
