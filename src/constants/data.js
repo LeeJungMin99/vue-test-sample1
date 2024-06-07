@@ -1,0 +1,30 @@
+export const categoryData = [
+  { id: 1, value: "hardware", text: "Hardware" },
+  { id: 2, value: "software", text: "Software" },
+  { id: 3, value: "network", text: "Network" },
+  { id: 4, value: "inprocessing", text: "In-Processing" },
+];
+
+export const itemData = [
+  { id: 11, value: "laptop", text: "Laptop", category: "hardware" },
+  { id: 12, value: "mobile", text: "Mobile", category: "hardware" },
+  { id: 13, value: "peripherals", text: "Peripherals", category: "hardware" },
+  { id: 14, value: "deskphone", text: "Desk Phone", category: "hardware" },
+  { id: 15, value: "printers", text: "Printers", category: "hardware" },
+  { id: 16, value: "other", text: "Other", category: "hardware" },
+  { id: 21, value: "teamszoom", text: "Teams/Zoom", category: "software" },
+  { id: 22, value: "mb", text: "Mobile Blackberry", category: "software" },
+  { id: 23, value: "adobe", text: "Adobe", category: "software" },
+  { id: 24, value: "outlook", text: "Outlook", category: "software" },
+  { id: 25, value: "mso", text: "Microsoft Office", category: "software" },
+  { id: 26, value: "other", text: "Other", category: "software" },
+  { id: 31, value: "nc", text: "Network Access", category: "network" },
+  { id: 32, value: "connectivity", text: "Connectivity", category: "network" },
+  { id: 33, value: "vpn", text: "VPN", category: "network" },
+  { id: 34, value: "drivers", text: "Drivers", category: "network" },
+  { id: 35, value: "others", text: "Others", category: "network" },
+  { id: 41, value: "ab", text: "Access Badge", category: "inprocessing" },
+  { id: 42, value: "ca", text: "Common Access Card", category: "inprocessing" },
+  { id: 43, value: "sipr", text: "SIPR", category: "inprocessing" },
+  { id: 44, value: "trello", text: "Trello", category: "inprocessing" },
+];
