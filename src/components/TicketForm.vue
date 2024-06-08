@@ -6,6 +6,7 @@
         <select
           class="w-full border px-3 py-1 rounded"
           id="category"
+          required
           v-model="formData.category"
         >
           <option v-for="el in categories" :key="el.id" :value="el.value">
@@ -18,6 +19,7 @@
         <select
           id="items-dropdown"
           multiple="true"
+          required
           class="w-full border px-4 py-2 rounded"
           v-model="formData.selectedItems"
           @blur="hideDropdown"
@@ -43,6 +45,7 @@
     <div class="mb-4 px-2 w-full">
       <label for="text" class="block mb-2 text-sm">Description</label>
       <input
+        required
         type="text"
         id="description"
         class="w-full p-1"
@@ -74,6 +77,11 @@
           @change="handleFileChange"
         />
       </div>
+    </div>
+    <div v-if="errors.length" class="text-red-700 font-bold text-sm">
+      <ul>
+        <li v-for="error in errors">{{ error }}</li>
+      </ul>
     </div>
     <div class="py-10 px-2 w-full flex justify-between">
       <div><PageLink linkName="All Tickets" path="/ticketlist" /></div>
@@ -114,6 +122,7 @@ const formData = ref({
 const submittedData = ref(null);
 const addedFiles = ref([]);
 const sequence = ref(0);
+const errors = ref([]);
 
 const filteredItems = computed(() => {
   if (!formData.value.category) return items.value;
@@ -148,6 +157,10 @@ const handleFileChange = (e) => {
 };
 
 const handleSubmit = () => {
+  errors.value = [];
+  validateForm();
+  if (errors.value.length > 0) return;
+
   const id = Math.floor(Math.random() * 1000000);
   submittedData.value = {
     ...formData.value,
@@ -157,6 +170,10 @@ const handleSubmit = () => {
   store.addNewTicket({ ...submittedData.value });
   router.push(`/ticket/${id}`);
   initiateForm();
+};
+
+const validateForm = () => {
+  if (addedFiles.value.length < 1) errors.value.push("File is required");
 };
 
 const initiateForm = () => {

@@ -5,8 +5,11 @@
         <li class="mb-4" v-for="ticket in store.tickets" :key="ticket.subject">
           <div class="flex flex-row justify-between">
             <div>
-              <span class="font-bold">{{ ticket.id }}</span
-              >{{}} {{ ticket.category }} - {{ ticket.subject }}
+              <span>Id: {{ ticket.id }}</span
+              >{{}}
+              <span class="font-bold"
+                >{{ ticket.category }} - {{ ticket.subject }}
+              </span>
             </div>
             <div class="flex flex-row">
               <PageLink
@@ -33,6 +36,7 @@
 import { useTicketsStore } from "@/stores/TicketStore";
 import PageLink from "./common/PageLink.vue";
 import TrashIcon from "./common/TrashIcon.vue";
+import { categoryData, itemData } from "../constants/data";
 
 const store = useTicketsStore();
 

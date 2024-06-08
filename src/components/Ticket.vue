@@ -44,8 +44,11 @@
     </div>
   </div>
 
-  <div class="px-2 py-4">
+  <div class="px-2 py-1">
     <PageLink linkName="All Tickets" path="/ticketlist" />
+  </div>
+  <div class="px-2 py-4">
+    <PageLink linkName="Add New Ticket" path="/" />
   </div>
 </template>
 
