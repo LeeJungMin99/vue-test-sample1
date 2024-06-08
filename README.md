@@ -10,7 +10,7 @@ This Ticket Form is built in Vue.js leveraging <ins>Pinia</ins> for state manage
 
 > /ticket/:id <br />
 
-**Ticket Details**: This page displays all the information of a single ticket with the id value.
+**Ticket Details**: This page displays all information of a single ticket with its ID.
 
 > /ticketlist <br />
 
