@@ -158,15 +158,12 @@ const handleFileChange = (e) => {
 
 const handleSubmit = () => {
   errors.value = [];
-  //validateForm();
+  validateForm();
   if (errors.value.length > 0) return;
 
   const id = Math.floor(Math.random() * 1000000);
-  console.log("form data", formData.value);
-
   submittedData.value = {
     ...formData.value,
-
     addedFiles: [...addedFiles.value],
     id,
   };
