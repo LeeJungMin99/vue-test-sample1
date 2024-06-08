@@ -14,8 +14,11 @@
                 path="/ticket"
                 :id="ticket.id"
               />
-              <div class="px-6 mt-1"><TrashIcon /></div>
+              <button class="px-2" @click="handleDelete(ticket.id)">
+                <TrashIcon />
+              </button>
             </div>
+            <div class="mt-1"></div>
           </div>
         </li>
       </ul>
@@ -29,8 +32,11 @@
 <script setup>
 import { useTicketsStore } from "@/stores/TicketStore";
 import PageLink from "./common/PageLink.vue";
-import TrashIcon from "../components/common/TrashIcon.vue";
+import TrashIcon from "./common/TrashIcon.vue";
 
 const store = useTicketsStore();
-console.log("🚀 ~ store in list=========:", store.tickets);
+
+const handleDelete = (id) => {
+  store.removeTicket(id);
+};
 </script>

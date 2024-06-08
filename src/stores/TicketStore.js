@@ -6,5 +6,9 @@ export const useTicketsStore = defineStore("ticketsStore", () => {
 
   const addNewTicket = (newTicket) => tickets.value.push(newTicket);
 
-  return { tickets, addNewTicket };
+  const removeTicket = (id) => {
+    tickets.value = tickets.value.filter((ticket) => ticket.id !== id);
+  };
+
+  return { tickets, addNewTicket, removeTicket };
 });
