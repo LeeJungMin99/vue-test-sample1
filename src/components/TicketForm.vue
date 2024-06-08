@@ -55,8 +55,13 @@
       </div>
       <div class="mb-4 w-full">
         <ul v-if="addedFiles.length">
-          <li v-for="file in addedFiles" :key="file.name">
-            <p class="text-sm text-blue-900">{{ file.name }}</p>
+          <li class="py-1" v-for="file in addedFiles" :key="file.name">
+            <div class="flex flex-row">
+              <p class="text-sm text-blue-900">{{ file.name }}</p>
+              <div class="px-4">
+                <button @click="removeFile(file.name)"><TrashIcon /></button>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -90,6 +95,7 @@ import { useRouter } from "vue-router";
 import { useTicketsStore } from "@/stores/TicketStore";
 import { categoryData, itemData } from "../constants/data";
 import PageLink from "./common/PageLink.vue";
+import TrashIcon from "./common/TrashIcon.vue";
 
 const router = useRouter();
 const store = useTicketsStore();
@@ -161,6 +167,10 @@ const initiateForm = () => {
     description: "",
     addedFiles: [],
   };
+};
+
+const removeFile = (filename) => {
+  addedFiles.value = addedFiles.value.filter((file) => file.name !== filename);
 };
 </script>
 
