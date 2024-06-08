@@ -2,7 +2,9 @@
   <div class="flex flex-row">
     <div class="mb-4 px-2 w-full">
       <label class="block mb-2 text-sm">Category</label>
-      <p class="px-4 py-1">{{ ticket.category }}</p>
+      <p class="px-4 py-1">
+        {{ categoryData.find((el) => el.value === ticket.category).text }}
+      </p>
     </div>
     <div class="mb-4 px-2 w-full">
       <label class="block mb-2 text-sm">Type</label>
@@ -11,7 +13,7 @@
           <li class="py-1" v-for="item in ticket.selectedItems" :key="item">
             <span
               class="text-sm mr-2 text-green-900 bg-blue-200 py-1 px-2 rounded-lg font-bold"
-              >{{ item }}</span
+              >{{ itemData.find((el) => el.value === item).text }}</span
             >
           </li>
         </div>
@@ -37,7 +39,6 @@
             <div>
               <span class="text-sm text-blue-900">{{ file.name }}</span>
             </div>
-            <div class="px-6 mt-1"><TrashIcon /></div>
           </div>
         </li>
       </ul>
@@ -57,6 +58,7 @@ import { useRoute } from "vue-router";
 import { useTicketsStore } from "@/stores/TicketStore";
 import PageLink from "./common/PageLink.vue";
 import TrashIcon from "./common/TrashIcon.vue";
+import { categoryData, itemData } from "../constants/data";
 
 const route = useRoute();
 const store = useTicketsStore();

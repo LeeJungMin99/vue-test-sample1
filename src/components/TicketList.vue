@@ -1,18 +1,26 @@
 <template>
-  <div class="px-2">
+  <div class="px-2 w-full">
     <div>
-      <ul v-if="store.tickets.length">
-        <li class="mb-4" v-for="ticket in store.tickets" :key="ticket.subject">
+      <ul class="w-full" v-if="store.tickets.length">
+        <li
+          class="mb-4 w-full"
+          v-for="ticket in store.tickets"
+          :key="ticket.subject"
+        >
           <div class="flex flex-row justify-between">
-            <div>
-              <span>Id: {{ ticket.id }}</span
-              >{{}}
+            <div class="w-full">
+              <span>Id: {{ ticket.id }}</span>
+              {{}}
               <span class="font-bold"
-                >{{ ticket.category }} - {{ ticket.subject }}
+                >{{
+                  categoryData.find((el) => el.value === ticket.category).text
+                }}
               </span>
+              <p>{{ ticket.subject }}</p>
             </div>
-            <div class="flex flex-row">
+            <div class="w-full flex flex-row justify-end">
               <PageLink
+                class="mt-3"
                 linkName="Ticket Details"
                 path="/ticket"
                 :id="ticket.id"
@@ -36,7 +44,7 @@
 import { useTicketsStore } from "@/stores/TicketStore";
 import PageLink from "./common/PageLink.vue";
 import TrashIcon from "./common/TrashIcon.vue";
-import { categoryData, itemData } from "../constants/data";
+import { categoryData } from "../constants/data";
 
 const store = useTicketsStore();
 
