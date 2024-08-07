@@ -38,6 +38,21 @@ const siteRouter = createRouter({
       name: "index4", // single ticket
       component: () => import("../views/IndexView4.vue"),
     },
+    {
+      path: "/index5",
+      name: "index5", // single ticket
+      component: () => import("../views/IndexView5.vue"),
+    },
+    {
+      path: "/index6",
+      name: "index6", // single ticket
+      component: () => import("../views/IndexView6.vue"),
+    },
+    {
+      path: "/index7",
+      name: "index7", // single ticket
+      component: () => import("../views/IndexView7.vue"),
+    },
   ],
 });
 
