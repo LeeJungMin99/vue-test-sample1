@@ -7,7 +7,7 @@ VUE TEST
 ### Clone the Repository
 
 ```sh
-git clone https://github.com/jparkley/vuejs-pinia-composition-api.git
+git clone https://github.com/LeeJungMin99/vue-test-sample1.git
 ```
 
 ### Install Packages
